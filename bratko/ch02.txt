@@ -1,0 +1,68 @@
+2.1)	a)	variable
+		b)	atom
+		c)	atom
+		d)	variable
+		e)	atom
+		f)	structure
+		g)	number
+		h)	syntactically incorrect
+		i)	structure
+		j)	syntactically incorrect
+
+2.2)	rectangle(point(X,Y),Width,Height). % top-left corner
+		square(point(X,Y),Side) :- rectangle(X,Y,Side,Side).
+		circle(point(X,Y),Radius).
+		/* except for circle, you could always specify an angle of rotation
+		as an extra argument */
+
+2.3)	a)	A = 1
+			B = 2
+		b)	match fails
+		c)	match fails
+		d)	D = 2
+			E = 2
+		e)	P1 = point(-1,0)
+			P2 = point(1,0)
+			P3 = point(0,Y)
+			The therefore symbol with the top symbol as high or as low as it
+			can go (isoceles triangle).
+
+2.4)	segmnet(point(5,Y1),point(5,Y2)).
+
+2.5)	regular(rectangle(P1,P2,P3,P4)) :-
+			vertical(P1,P2),vertical(P3,P4),
+			vertical(P1,P3),vertical(P2,P4).
+
+		or assuming P1 is top-left going right for first edge...
+
+		regular(rectangle(point(X1,Y1),point(X2,Y1),point(X2,Y2),point(X1,Y2))).
+
+2.6)	a)	A = two
+		b)	false
+		c)	C = one
+		d)	D = s(s(1)); % and...
+			D = s(s(s(s(s(s(1)))))).
+
+2.7)	relatives(X,Y) :- predecessor(X,Y);
+						  predecessor(Y,X);
+						  predecessor(Z,X), predecessor(Z,Y);
+						  predecessor(X,Z), predecessor(Y,Z). 
+
+2.8)	translate(1, one).
+		translate(2, two).
+		translate(3, three).
+
+2.9)	1)	Initial:     big(X),dark(X)
+		2)	Scan until:  big(bear)
+			New goal:    dark(bear)
+		3)	Scan until:	 dark(bear) :- black(bear)
+		4)	No clause black(bear) found. Backtrack.
+		5)	Scan until:	 dark(bear) :- brown(bear)
+		6)	brown(bear matched).
+
+		On first impression, same amount of work needed but goal list can be
+		shortened more quickly with above version and so fewer check per match.
+
+2.10)	Because X is a variable - which matches everything - the matching follows
+		the recursive definition which ends up in the same situation.
+		Correction: So... it succeeds and X ends up referring to itself.

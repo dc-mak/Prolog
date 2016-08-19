@@ -1,0 +1,31 @@
+1.1)	a)	false/no
+		b)	X = pat
+		c)	X = bob
+		d)	X = bob
+			Y = pat
+
+1.2)	a)	parent(X, pat).
+		b)	parent(liz, X).
+		c)	parent(Y,pat),parent(X,Y).
+
+1.3)	a)	happy(X) :- parent(X,Y).
+		b)	hastwochildren(X) :- parent(X,Y),sister(Y,Z).
+
+1.4)	granchild(X) :- parent(Y,X),parent(Z,Y).
+
+1.5)	aunt(X,Y) :- parent(Z,Y),sister(X,Z).
+
+1.6)	It's correct, as for the diagram I think the arrow direction would be
+		reversed.
+
+1.7)	a)	true (by fact parent(pam, bob).)
+		b)	First clause:  parent(pam,bob) is true as above (
+			Second clause: female(pam) is true by fact.
+		c)	parent(pam,Y),parent(Y,ann).
+				parent(pam,bob) by look-up/fact (and backtrack to..)
+			parent(bob,ann) is true by look-up/fact.
+		d)	parent(bob,Y),parent(Y,jim).
+				parent(bob,ann) # choice point
+			parent(ann,Y) is false % backtrack
+				parent(bob,pat)
+			parent(pat,jim) is true by fact.
